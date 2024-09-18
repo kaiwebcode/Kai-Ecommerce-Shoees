@@ -1,4 +1,4 @@
-"use client";
+"use server";
 import { addItem } from "@/app/actions";
 
 import { FeaturedProduct } from "@/app/components/storefront/FeaturedProduct";
