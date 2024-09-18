@@ -1,4 +1,4 @@
-"use server";
+
 import { addItem } from "@/app/actions";
 import { FeaturedProduct } from "@/app/components/storefront/FeaturedProduct";
 import { ImageSlider } from "@/app/components/storefront/ImageSlider";
@@ -10,7 +10,7 @@ import prisma from "@/app/lib/db";
 
 // Fetch data from Prisma with error handling
 async function getData(productId: string) {
-  await new Promise((resolve) => setTimeout(resolve, 5000));
+  // await new Promise((resolve) => setTimeout(resolve, 5000));
 
   try {
     const data = await prisma.product.findUnique({
