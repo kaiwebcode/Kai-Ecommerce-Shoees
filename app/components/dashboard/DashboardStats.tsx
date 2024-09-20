@@ -1,9 +1,39 @@
 
+import prisma from "@/app/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { DollarSign, PartyPopper, ShoppingBag, User2 } from "lucide-react";
 
-export async function DashboardStats() {
+async function getData() {
+  const [user, products, order] = await Promise.all([
+    prisma.user.findMany({
+      select: {
+        id: true,
+      },
+    }),
+    prisma.product.findMany({
+      select: {
+        id: true,
+      },
+    }),
+    prisma.order.findMany({
+      select: {
+        amount: true,
+      },
+    }),
+  ]);
+  return {
+    user,
+    products,
+    order,
+  };
+}
 
+export async function DashboardStats() {
+  const { products, user, order } = await getData();
+
+  const totalAmount = order.reduce((accumalator, currentValue) => {
+    return accumalator + currentValue.amount;
+  }, 0);
   return (
     <div className="grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-4">
       <Card>
@@ -13,7 +43,7 @@ export async function DashboardStats() {
         </CardHeader>
         <CardContent>
           <p className="text-2xl font-bold ">
-            ₹60000
+            ₹{new Intl.NumberFormat("en-IN").format(totalAmount / 100)}
           </p>
           <p className="text-xs text-muted-foreground">Based on 100 Charges</p>
         </CardContent>
@@ -24,7 +54,7 @@ export async function DashboardStats() {
           <ShoppingBag className="h-4 w-4 text-blue-500" />
         </CardHeader>
         <CardContent>
-          <p className="text-2xl font-bold ">+10</p>
+          <p className="text-2xl font-bold ">+{order.length}</p>
           <p className="text-xs text-muted-foreground">
             Total Sales on Kai-Shoe{" "}
           </p>
@@ -36,7 +66,7 @@ export async function DashboardStats() {
           <PartyPopper className="h-4 w-4 text-indigo-500" />
         </CardHeader>
         <CardContent>
-          <p className="text-2xl font-bold ">67</p>
+          <p className="text-2xl font-bold ">{products.length}</p>
           <p className="text-xs text-muted-foreground">
             Total Products created{" "}
           </p>
@@ -48,7 +78,7 @@ export async function DashboardStats() {
           <User2 className="h-4 w-4 text-orange-500" />
         </CardHeader>
         <CardContent>
-          <p className="text-2xl font-bold ">120</p>
+          <p className="text-2xl font-bold ">{user.length}</p>
           <p className="text-xs text-muted-foreground">
             Toal User Signed Up on Kai-Shoe{" "}
           </p>

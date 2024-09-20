@@ -1,3 +1,4 @@
+import prisma from "@/app/lib/db";
 import {
   Card,
   CardContent,
@@ -15,8 +16,31 @@ import {
 } from "@/components/ui/table";
 import { unstable_noStore as noStore } from "next/cache";
 
+async function getData() {
+  const data = await prisma.order.findMany({
+    select: {
+      amount: true,
+      createdAt: true,
+      status: true,
+      id: true,
+      User: {
+        select: {
+          firstName: true,
+          email: true,
+          profileImage: true,
+        },
+      },
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+  return data;
+}
+
 export default async function OrdersPage() {
   noStore();
+  const data = await getData();
   return (
     <Card>
       <CardHeader className="px-7">
@@ -35,18 +59,26 @@ export default async function OrdersPage() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            <TableRow>
-              <TableCell>
-                <p className="font-medium">Kaif</p>
-                <p className="hidden md:flex text-sm text-muted-foreground">
-                  KaiBatman@gmail.com
-                </p>
-              </TableCell>
-              <TableCell>Sale</TableCell>
-              <TableCell>Successful</TableCell>
-              <TableCell>2024-06-15</TableCell>
-              <TableCell className="text-right">$5000</TableCell>
-            </TableRow>
+            {data.map((item) => (
+              <TableRow key={item.id}>
+                <TableCell>
+                  <p className="font-medium">{item.User?.firstName}</p>
+                  <p className="hidden md:flex text-sm text-muted-foreground">
+                    {item.User?.email}
+                  </p>
+                </TableCell>
+                <TableCell>Order</TableCell>
+                <TableCell>{item.status}</TableCell>
+                <TableCell>
+                  {" "}
+                  {new Intl.DateTimeFormat("en-IN").format(item.createdAt)}
+                </TableCell>
+                <TableCell className="text-right">
+                  {" "}
+                  ${new Intl.NumberFormat("en-IN").format(item.amount / 100)}
+                </TableCell>
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </CardContent>

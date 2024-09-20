@@ -8,10 +8,43 @@ import {
 import React from "react";
 import { DashboardStats } from "../components/dashboard/DashboardStats";
 import { RecentSales } from "../components/dashboard/RecentSales";
+
 import { unstable_noStore as noStore } from "next/cache";
+import prisma from "../lib/db";
+import { Chart } from "../components/dashboard/Chart";
+
+async function getData() {
+  const now = new Date();
+
+  const sevenDaysAgo = new Date();
+  sevenDaysAgo.setDate(now.getDate() - 7);
+
+  const data = await prisma.order.findMany({
+    where: {
+      createdAt: {
+        gte: sevenDaysAgo,
+      },
+    },
+    select: {
+      amount: true,
+      createdAt: true,
+    },
+    orderBy: {
+      createdAt: "asc",
+    },
+  });
+
+  const result = data.map((item) => ({
+    date: new Intl.DateTimeFormat("en-IN").format(item.createdAt),
+    revenue: item.amount / 100,
+  }));
+
+  return result;
+}
 
 export default async function Dashboard() {
   noStore();
+  const data = await getData();
   return (
     <>
       <DashboardStats />
@@ -21,10 +54,12 @@ export default async function Dashboard() {
           <CardHeader>
             <CardTitle>Transaction</CardTitle>
             <CardDescription>
-              Recent transaction from the last 7 days
+              Recent transactions from the last 7 days
             </CardDescription>
           </CardHeader>
-          <CardContent></CardContent>
+          <CardContent>
+            <Chart data={data} />
+          </CardContent>
         </Card>
 
         <RecentSales />
