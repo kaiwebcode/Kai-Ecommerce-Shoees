@@ -6,20 +6,18 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import React from "react";
-import { DashboardStats } from "../components/dashboard/DashboardStats";
-import { RecentSales } from "../components/dashboard/RecentSales";
-
+import DashboardStats from "../components/dashboard/DashboardStats"; // Make sure the path is correct
 import { unstable_noStore as noStore } from "next/cache";
 import prisma from "../lib/db";
 import { Chart } from "../components/dashboard/Chart";
+import { RecentSales } from "../components/dashboard/RecentSales";
 
 async function getData() {
   const now = new Date();
-
   const sevenDaysAgo = new Date();
   sevenDaysAgo.setDate(now.getDate() - 7);
 
-  const data = await prisma.order.findMany({
+  const orders = await prisma.order.findMany({
     where: {
       createdAt: {
         gte: sevenDaysAgo,
@@ -34,22 +32,50 @@ async function getData() {
     },
   });
 
-  const result = data.map((item) => ({
+  const users = await prisma.user.findMany({
+    select: {
+      id: true,
+    },
+  });
+
+  const products = await prisma.product.findMany({
+    select: {
+      id: true,
+    },
+  });
+
+  const result = orders.map((item) => ({
     date: new Intl.DateTimeFormat("en-IN").format(item.createdAt),
     revenue: item.amount / 100,
   }));
 
-  return result;
+  return {
+    orders,
+    users,
+    products,
+    chartData: result,
+  };
 }
 
 export default async function Dashboard() {
   noStore();
   const data = await getData();
+
+  const totalRevenue = data.orders.reduce((acc, curr) => acc + curr.amount, 0);
+  const totalSales = data.orders.length;
+  const totalUsers = data.users.length;
+  const totalProducts = data.products.length;
+
   return (
     <>
-      <DashboardStats />
+      <DashboardStats 
+        totalRevenue={totalRevenue} 
+        totalSales={totalSales} 
+        totalUsers={totalUsers} 
+        totalProducts={totalProducts} 
+      />
 
-      <div className="grid gap-4 md:gp-8 lg:grid-cols-2 xl:grid-cols-3 mt-10">
+      <div className="grid gap-4 md:gap-8 lg:grid-cols-2 xl:grid-cols-3 mt-10">
         <Card className="xl:col-span-2">
           <CardHeader>
             <CardTitle>Transaction</CardTitle>
@@ -58,7 +84,7 @@ export default async function Dashboard() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <Chart data={data} />
+            <Chart data={data.chartData} />
           </CardContent>
         </Card>
 

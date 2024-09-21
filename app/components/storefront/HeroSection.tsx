@@ -1,26 +1,16 @@
 "use client";
 
 import { Check, Star } from "lucide-react";
-import Image from "next/image";
-import Hero from "@/public/Hero.jpg.jpg";
+import Image from "next/image"; // Make sure you're importing Image from next/image
+import Hero from "@/public/Hero.jpg.jpg"; // Make sure the path is correct
 
 const HeroSection = () => {
   return (
     <section>
       <div className="pb-6 pt-8 lg:grid lg:grid-cols-3 sm:pb-32 lg:gap-x-0 xl:gap-x-8 lg:pt-24 xl:pt-32 lg:pb-52">
         <div className="col-span-2 px-6 lg:px-0 lg:pt-4">
-          <div
-            className="relative mx-auto text-center lg:text-left
-            flex flex-col items-center lg:items-start"
-          >
-            <div
-              className="absolute w-28 left-0 -top-20 hidden
-              lg:block"
-            ></div>
-            <h1
-              className="relative w-fit tracking-tight text-balance mt-16 font-bold !leading-tight text-gray-900 text-5xl
-              md:text-6xl lg:text-7xl"
-            >
+          <div className="relative mx-auto text-center lg:text-left flex flex-col items-center lg:items-start">
+            <h1 className="relative w-fit tracking-tight text-balance mt-16 font-bold !leading-tight text-gray-900 text-5xl md:text-6xl lg:text-7xl">
               Discover the Latest in{" "}
               <span className="bg-green-600 px-2 text-white">Stylish</span> Shoes
             </h1>
@@ -48,30 +38,40 @@ const HeroSection = () => {
 
             <div className="mt-12 flex flex-col sm:flex-row items-center sm:items-start gap-5">
               <div className="flex -space-x-4">
-                <img
+                <Image
                   src="https://github.com/joschan21/casecobra/blob/master/public/users/user-1.png?raw=true"
                   alt="user image-1"
-                  className="inline-block h-10 w-10 rounded-full ring-2 ring-slate-100"
+                  width={40} // Set appropriate width
+                  height={40} // Set appropriate height
+                  className="inline-block rounded-full ring-2 ring-slate-100"
                 />
-                <img
+                <Image
                   src="https://github.com/joschan21/casecobra/blob/master/public/users/user-2.png?raw=true"
                   alt="user image-2"
-                  className="inline-block h-10 w-10 rounded-full ring-2 ring-slate-100"
+                  width={40}
+                  height={40}
+                  className="inline-block rounded-full ring-2 ring-slate-100"
                 />
-                <img
+                <Image
                   src="https://github.com/joschan21/casecobra/blob/master/public/users/user-3.png?raw=true"
                   alt="user image-3"
-                  className="inline-block h-10 w-10 rounded-full ring-2 ring-slate-100"
+                  width={40}
+                  height={40}
+                  className="inline-block rounded-full ring-2 ring-slate-100"
                 />
-                <img
+                <Image
                   src="https://github.com/joschan21/casecobra/blob/master/public/users/user-4.jpg?raw=true"
                   alt="user image-4"
-                  className="inline-block h-10 w-10 rounded-full ring-2 ring-slate-100"
+                  width={40}
+                  height={40}
+                  className="inline-block rounded-full ring-2 ring-slate-100"
                 />
-                <img
+                <Image
                   src="https://github.com/joschan21/casecobra/blob/master/public/users/user-5.jpg?raw=true"
                   alt="user image-5"
-                  className="inline-block object-cover h-10 w-10 rounded-full ring-2 ring-slate-100"
+                  width={40}
+                  height={40}
+                  className="inline-block object-cover rounded-full ring-2 ring-slate-100"
                 />
               </div>
 
@@ -96,6 +96,8 @@ const HeroSection = () => {
               src={Hero}
               alt="Shoes collection showcase"
               className="object-cover object-center"
+              width={500} // Set appropriate width
+              height={500} // Set appropriate height
             />
           </div>
         </div>
