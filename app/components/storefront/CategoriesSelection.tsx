@@ -8,11 +8,11 @@ export function CategoriesSelection() {
   return (
     <div className="py-24 sm:py-32">
       <div className="flex justify-between items-center">
-        <h2 className="text-2xl font-extrabold tracking-tight">
+        <h2 className="lg:text-2xl sm:text-xs font-extrabold tracking-tight ">
           Shop by Category
         </h2>
         <Link
-          className="text-sm font-semibold text-primary hover:text-primary/80 "
+          className="lg:text-sm text-xs font-semibold text-primary hover:text-primary/80 "
           href="/products/all"
         >
           Browse all Product &rarr;
