@@ -51,7 +51,6 @@ export function Chart({ data }: iAppProps) {
     <ResponsiveContainer width="100%" height={400}>
       <AreaChart
         data={processedData}
-        margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
       >
         {/* Define the gradient for the area fill */}
         <defs>
