@@ -52,40 +52,30 @@ const HeroSection = () => {
 
             <div className="mt-12 flex flex-col sm:flex-row items-center sm:items-start gap-5">
               <div className="flex -space-x-4">
-                <img
-                  src="https://github.com/joschan21/casecobra/blob/master/public/users/user-1.png?raw=true"
-                  alt="user image-1"
-                  className="inline-block h-10 w-10 rounded-full ring-2 ring-slate-100"
-                />
-                <img
-                  src="https://github.com/joschan21/casecobra/blob/master/public/users/user-2.png?raw=true"
-                  alt="user image-2"
-                  className="inline-block h-10 w-10 rounded-full ring-2 ring-slate-100"
-                />
-                <img
-                  src="https://github.com/joschan21/casecobra/blob/master/public/users/user-3.png?raw=true"
-                  alt="user image-3"
-                  className="inline-block h-10 w-10 rounded-full ring-2 ring-slate-100"
-                />
-                <img
-                  src="https://github.com/joschan21/casecobra/blob/master/public/users/user-4.jpg?raw=true"
-                  alt="user image-4"
-                  className="inline-block h-10 w-10 rounded-full ring-2 ring-slate-100"
-                />
-                <img
-                  src="https://github.com/joschan21/casecobra/blob/master/public/users/user-5.jpg?raw=true"
-                  alt="user image-5"
-                  className="inline-block object-cover h-10 w-10 rounded-full ring-2 ring-slate-100"
-                />
+                {/* Replace the user images with your own optimized URLs */}
+                {[
+                  "https://github.com/joschan21/casecobra/raw/master/public/users/user-1.png",
+                  "https://github.com/joschan21/casecobra/raw/master/public/users/user-2.png",
+                  "https://github.com/joschan21/casecobra/raw/master/public/users/user-3.png",
+                  "https://github.com/joschan21/casecobra/raw/master/public/users/user-4.jpg",
+                  "https://github.com/joschan21/casecobra/raw/master/public/users/user-5.jpg",
+                ].map((src, index) => (
+                  <Image
+                    key={index}
+                    src={src}
+                    alt={`user image-${index + 1}`}
+                    width={40} // Adjusted size for better visibility
+                    height={40}
+                    className="inline-block h-10 w-10 rounded-full ring-2 ring-slate-100"
+                  />
+                ))}
               </div>
 
               <div className="flex flex-col justify-between items-center sm:items-start">
                 <div className="flex gap-0.5">
-                  <Star className="h-4 w-4 text-green-600 fill-green-600" />
-                  <Star className="h-4 w-4 text-green-600 fill-green-600" />
-                  <Star className="h-4 w-4 text-green-600 fill-green-600" />
-                  <Star className="h-4 w-4 text-green-600 fill-green-600" />
-                  <Star className="h-4 w-4 text-green-600 fill-green-600" />
+                  {[...Array(5)].map((_, index) => (
+                    <Star key={index} className="h-4 w-4 text-green-600 fill-green-600" />
+                  ))}
                 </div>
                 <p>
                   <span className="font-semibold">
@@ -104,6 +94,8 @@ const HeroSection = () => {
               src={Hero}
               alt="Shoes collection showcase"
               className="object-cover object-center"
+              width={500} // Provide appropriate width and height
+              height={300}
             />
           </div>
         </div>

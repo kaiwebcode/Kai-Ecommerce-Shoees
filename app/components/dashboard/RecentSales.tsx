@@ -1,7 +1,5 @@
-// RecentSales.tsx
-"use client"
+"use client";
 
-import prisma from "@/app/lib/db";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import CountUp from "react-countup";
@@ -18,29 +16,7 @@ interface RecentSalesProps {
   }[];
 }
 
-async function getData(): Promise<RecentSalesProps["sales"]> {
-  const data = await prisma.order.findMany({
-    select: {
-      amount: true,
-      id: true,
-      User: {
-        select: {
-          firstName: true,
-          profileImage: true,
-          email: true,
-        },
-      },
-    },
-    orderBy: {
-      createdAt: "desc",
-    },
-    take: 7,
-  });
-
-  return data;
-}
-
-export async function RecentSales({ sales }: RecentSalesProps) {
+export function RecentSales({ sales }: RecentSalesProps) {
   return (
     <Card>
       <CardHeader>
