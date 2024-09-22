@@ -1,5 +1,3 @@
-// Dashboard.tsx
-
 import {
   Card,
   CardContent,
@@ -8,10 +6,10 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import React from "react";
-import DashboardStats from "../components/dashboard/DashboardStats"; // Make sure the path is correct
+import DashboardStats from "../components/dashboard/DashboardStats";
 import { unstable_noStore as noStore } from "next/cache";
 import prisma from "../lib/db";
-import { Chart } from "../components/dashboard/Chart";
+import { Chart } from "../components/dashboard/Chart"; // Updated import
 import { RecentSales } from "../components/dashboard/RecentSales";
 
 async function getData() {
@@ -74,7 +72,7 @@ async function getData() {
     users,
     products,
     chartData: result,
-    recentSales,  // Add recentSales here
+    recentSales,
   };
 }
 
@@ -89,11 +87,11 @@ export default async function Dashboard() {
 
   return (
     <>
-      <DashboardStats 
-        totalRevenue={totalRevenue} 
-        totalSales={totalSales} 
-        totalUsers={totalUsers} 
-        totalProducts={totalProducts} 
+      <DashboardStats
+        totalRevenue={totalRevenue}
+        totalSales={totalSales}
+        totalUsers={totalUsers}
+        totalProducts={totalProducts}
       />
 
       <div className="grid gap-4 md:gap-8 lg:grid-cols-2 xl:grid-cols-3 mt-10">
@@ -105,11 +103,11 @@ export default async function Dashboard() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <Chart data={data.chartData} />
+            <Chart data={data.chartData} /> {/* Updated Chart */}
           </CardContent>
         </Card>
 
-        <RecentSales sales={data.recentSales} /> {/* Pass recentSales as prop */}
+        <RecentSales sales={data.recentSales} />
       </div>
     </>
   );
