@@ -23,15 +23,20 @@ interface AggregatedData {
   revenue: number;
 }
 
-const aggregateData = (data: { date: string; revenue: number }[]): AggregatedData[] => {
-  const aggregated = data.reduce((acc: Record<string, number>, curr: { date: string; revenue: number }) => {
-    if (acc[curr.date]) {
-      acc[curr.date] += curr.revenue;
-    } else {
-      acc[curr.date] = curr.revenue;
-    }
-    return acc;
-  }, {});
+const aggregateData = (
+  data: { date: string; revenue: number }[]
+): AggregatedData[] => {
+  const aggregated = data.reduce(
+    (acc: Record<string, number>, curr: { date: string; revenue: number }) => {
+      if (acc[curr.date]) {
+        acc[curr.date] += curr.revenue;
+      } else {
+        acc[curr.date] = curr.revenue;
+      }
+      return acc;
+    },
+    {}
+  );
 
   return Object.keys(aggregated).map((date) => ({
     date,
