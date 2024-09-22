@@ -1,3 +1,5 @@
+// Dashboard.tsx
+
 import {
   Card,
   CardContent,
@@ -44,6 +46,24 @@ async function getData() {
     },
   });
 
+  const recentSales = await prisma.order.findMany({
+    select: {
+      amount: true,
+      id: true,
+      User: {
+        select: {
+          firstName: true,
+          profileImage: true,
+          email: true,
+        },
+      },
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+    take: 7,
+  });
+
   const result = orders.map((item) => ({
     date: new Intl.DateTimeFormat("en-IN").format(item.createdAt),
     revenue: item.amount / 100,
@@ -54,6 +74,7 @@ async function getData() {
     users,
     products,
     chartData: result,
+    recentSales,  // Add recentSales here
   };
 }
 
@@ -88,7 +109,7 @@ export default async function Dashboard() {
           </CardContent>
         </Card>
 
-        <RecentSales />
+        <RecentSales sales={data.recentSales} /> {/* Pass recentSales as prop */}
       </div>
     </>
   );

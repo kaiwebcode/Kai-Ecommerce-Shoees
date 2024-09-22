@@ -26,7 +26,7 @@ export default function DashboardStats({
         </CardHeader>
         <CardContent>
           <p className="text-2xl font-bold">
-            ₹<CountUp end={totalRevenue / 100} duration={2.5} />
+            ₹<CountUp end={totalRevenue / 100} duration={3} />
           </p>
           <p className="text-xs text-muted-foreground">Based on 100 Charges</p>
         </CardContent>

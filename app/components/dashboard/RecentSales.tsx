@@ -1,8 +1,24 @@
+// RecentSales.tsx
+"use client"
+
 import prisma from "@/app/lib/db";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import CountUp from "react-countup";
 
-async function getData() {
+interface RecentSalesProps {
+  sales: {
+    amount: number;
+    id: string;
+    User: {
+      firstName: string;
+      profileImage: string | null;
+      email: string;
+    } | null;
+  }[];
+}
+
+async function getData(): Promise<RecentSalesProps["sales"]> {
   const data = await prisma.order.findMany({
     select: {
       amount: true,
@@ -24,15 +40,14 @@ async function getData() {
   return data;
 }
 
-export async function RecentSales() {
-  const data = await getData();
+export async function RecentSales({ sales }: RecentSalesProps) {
   return (
     <Card>
       <CardHeader>
         <CardTitle>Recent sales</CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col gap-8">
-        {data.map((item) => (
+        {sales.map((item) => (
           <div className="flex items-center gap-4" key={item.id}>
             <Avatar className="hidden sm:flex h-9 w-9">
               <AvatarFallback>
@@ -46,7 +61,7 @@ export async function RecentSales() {
               </p>
             </div>
             <p className="ml-auto font-medium">
-              +₹{new Intl.NumberFormat("en-IN").format(item.amount / 100)}
+              ₹<CountUp end={item.amount / 100} duration={3} separator="," />
             </p>
           </div>
         ))}
