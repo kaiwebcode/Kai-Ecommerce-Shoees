@@ -6,8 +6,8 @@ import HeroSection from "../components/storefront/HeroSection";
 export default function IndexPage() {
   return (
     <div>
+      <HeroSection />
       <Hero />
-     <HeroSection /> 
       <CategoriesSelection />
       <FeaturedProduct />
     </div>
