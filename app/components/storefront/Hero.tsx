@@ -34,7 +34,7 @@ export async function Hero() {
                 className="object-cover w-full h-full rounded-2xl"
               />
               <div
-                className="absolute lg:top-6 lg:left-6 top-2 left-2 bg-opacity-75 bg-black text-white lg:p-8 p-3 rounded-xl shadow-lg
+                className="absolute lg:top-6 lg:left-6 top-2 left-3 bg-opacity-75 bg-black text-white lg:p-8 p-3 rounded-xl shadow-lg
               transition-transform hover:scale-105"
               >
                 <h1 className="sm:text-xs lg:text-4xl font-bold">
