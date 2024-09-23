@@ -8,6 +8,9 @@ import CountUp from "react-countup";
 const HeroSection = () => {
   return (
     <section>
+      <div>
+        
+      </div>
       <div className="pb-6 pt-6 lg:grid lg:grid-cols-3 sm:pb-32 lg:gap-x-0 xl:gap-x-8 lg:pb-30">
         <div className="col-span-2 px-6 lg:px-0 lg:pt-4">
           <div
