@@ -1,21 +1,32 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { FaChevronUp } from "react-icons/fa";
 import { useColorModeValue } from "@chakra-ui/react";
 
 function ScrollToTop() {
-  const [visible, setvisible] = useState(false);
-  window.addEventListener("scroll", () => {
-    window.pageYOffset > 100 ? setvisible(true) : setvisible(false);
-  });
+  const [visible, setVisible] = useState(false);
+
+  // Add scroll event listener after component mounts
+  useEffect(() => {
+    const handleScroll = () => {
+      window.pageYOffset > 100 ? setVisible(true) : setVisible(false);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Cleanup event listener on component unmount
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <Div color={useColorModeValue("gray.600", "gray.400")}>
       <a
         href="#"
-        className={`${visible ? "block" : "none"}`}
+        className={visible ? "block" : "none"}
         color={useColorModeValue("gray.600", "gray.400")}
       >
         <FaChevronUp color={useColorModeValue("gray.600", "gray.400")} />
@@ -40,7 +51,6 @@ const Div = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    ${"" /* border:1px solid white; */}
     transition: 0.4s ease-in-out;
     z-index: 25;
     svg {

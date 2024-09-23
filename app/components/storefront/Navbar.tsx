@@ -26,8 +26,8 @@ export async function Navbar() {
     >
       <div className="flex items-center">
         <Link href="/">
-          <h1 className="text-black font-bold text-xl lg:text-3xl">
-            Shoe <span className="text-primary">Kai</span>
+          <h1 className="text-black p-2 font-bold text-xl lg:text-3xl border-black border-2 rounded-lg">
+            Shoe-<span className="text-primary">KAI</span>
           </h1>
         </Link>
         <NavbarLinks />
@@ -38,7 +38,7 @@ export async function Navbar() {
           <>
             <Link href="/bag" className="group pr-2 flex items-center mr-2">
               <ShoppingBagIcon className="h-6 w-6 text-gray-400 group-hover:text-gray-500" />
-              <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
+              <span className="mb-4 text-sm font-medium text-gray-700 group-hover:text-gray-800">
                 {total}
               </span>
             </Link>
