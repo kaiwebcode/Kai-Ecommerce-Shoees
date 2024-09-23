@@ -6,7 +6,7 @@ const f = createUploadthing();
 
 // FileRouter for your app, can contain multiple FileRoutes
 export const ourFileRouter = {
-  imageUploader: f({ image: { maxFileSize: "4MB", maxFileCount: 10 } })
+  imageUploader: f({ image: { maxFileSize: "8MB", maxFileCount: 10 } })
     .middleware(async () => {  // Removed req
       const { getUser } = getKindeServerSession();
       const user = await getUser();
@@ -23,7 +23,7 @@ export const ourFileRouter = {
       return { uploadedBy: metadata.userId };
     }),
 
-  bannerImageRoute: f({ image: { maxFileSize: "4MB", maxFileCount: 1 } })
+  bannerImageRoute: f({ image: { maxFileSize: "8MB", maxFileCount: 1 } })
     .middleware(async () => {  // Removed req
       const { getUser } = getKindeServerSession();
       const user = await getUser();

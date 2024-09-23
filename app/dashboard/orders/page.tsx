@@ -75,7 +75,7 @@ export default async function OrdersPage() {
                 </TableCell>
                 <TableCell className="text-right">
                   {" "}
-                  ${new Intl.NumberFormat("en-IN").format(item.amount / 100)}
+                  ₹{new Intl.NumberFormat("en-IN").format(item.amount / 100)}
                 </TableCell>
               </TableRow>
             ))}
