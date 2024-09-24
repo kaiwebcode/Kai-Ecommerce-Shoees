@@ -23,7 +23,7 @@ const HeroSection = () => {
               md:text-6xl lg:text-7xl"
             >
               Discover the Latest in{" "}
-              <span className="bg-green-600 px-2 text-white">Stylish</span>{" "}
+              <span className="bg-slate-900 px-2 text-white">Stylish</span>{" "}
               Shoes
             </h1>
             <p className="mt-8 text-lg lg:pr-10 max-w-prose text-center lg:text-left text-balance md:text-wrap">

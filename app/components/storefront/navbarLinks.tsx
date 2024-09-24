@@ -35,15 +35,15 @@ export const navbarLinks = [
 export function NavbarLinks() {
   const location = usePathname();
   return (
-    <div className="hidden md:flex justify-center items-center gap-x-2 ml-8">
+    <div className="hidden md:flex justify-center items-center gap-x-2 ml-8 text-white">
       {navbarLinks.map((item) => (
         <Link
           href={item.href}
           key={item.id}
           className={cn(
             location === item.href
-              ? "bg-muted"
-              : "hover:bg-muted hover:bg-opacity-75",
+              ? "bg-muted text-black"
+              : "hover:bg-muted hover:bg-opacity-75 hover:text-black",
             "group p-2 font-medium rounded-md"
           )}
         >
