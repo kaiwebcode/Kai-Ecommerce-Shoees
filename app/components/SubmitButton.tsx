@@ -59,13 +59,13 @@ export function DeleteItem() {
   return (
     <>
       {pending ? (
-        <button disabled className="font-medium text-primary text-end">
+        <button disabled className="font-medium text-end  bg-primary text-white p-1 rounded-md">
           Removing...
         </button>
       ) : (
-        <button type="submit" className="font-medium text-primary text-end">
+        <Button type="submit" variant={"destructive"} className="font-mediump-1 rounded-lg p-2">
           Delete
-        </button>
+        </Button>
       )}
     </>
   );

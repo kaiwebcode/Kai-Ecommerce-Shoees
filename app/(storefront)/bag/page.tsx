@@ -59,10 +59,10 @@ export default async function BagRoute() {
                   alt="Product image"
                 />
               </div>
-              <div className="ml-2 flex  justify-between w-full font-medium">
+              <div className="ml-2 lg:ml-5 flex  justify-between w-full font-medium">
                 <p>{item.name}</p>
                 <div className="flex flex-col h-full justify-between">
-                  <div className="flex items-center gap-x-1">
+                  <div className="flex items-center gap-x-1 lg:gap-x-2">
                     <p>{item.quantity} x</p>
                     <p>₹{item.price}</p>
                   </div>
