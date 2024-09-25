@@ -46,7 +46,7 @@ export default async function DashboardLayout({
             </Button>
           </SheetTrigger>
 
-          <SheetContent side={"bottom"}>
+          <SheetContent side={"left"}>
             <nav className="flex flex-col gap-6 text-lg font-medium mt-8">
               <DashboardNavigation />
             </nav>
