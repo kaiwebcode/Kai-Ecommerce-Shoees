@@ -87,27 +87,30 @@ export default async function Dashboard() {
 
   return (
     <>
-      <DashboardStats
-        totalRevenue={totalRevenue}
-        totalSales={totalSales}
-        totalUsers={totalUsers}
-        totalProducts={totalProducts}
-      />
+      <div>
+        <h1 className="lg:text-4xl text-3xl font-bold py-8">Welcome back, KAI</h1>
+        <DashboardStats
+          totalRevenue={totalRevenue}
+          totalSales={totalSales}
+          totalUsers={totalUsers}
+          totalProducts={totalProducts}
+        />
 
-      <div className="grid gap-4 md:gap-8 lg:grid-cols-2 xl:grid-cols-3 mt-10">
-        <Card className="xl:col-span-2">
-          <CardHeader>
-            <CardTitle>Transaction</CardTitle>
-            <CardDescription>
-              Recent transactions from the last 7 days
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Chart data={data.chartData} /> {/* Updated Chart */}
-          </CardContent>
-        </Card>
+        <div className="grid gap-4 md:gap-8 lg:grid-cols-2 xl:grid-cols-3 mt-10">
+          <Card className="xl:col-span-2">
+            <CardHeader>
+              <CardTitle>Transactions</CardTitle>
+              <CardDescription>
+                Recent transactions from the last 7 days
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Chart data={data.chartData} /> {/* Updated Chart */}
+            </CardContent>
+          </Card>
 
-        <RecentSales sales={data.recentSales} />
+          <RecentSales sales={data.recentSales} />
+        </div>
       </div>
     </>
   );

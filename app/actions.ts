@@ -274,6 +274,7 @@ export async function checkOut() {
         process.env.NODE_ENV === "development"
           ? "http://localhost:3000/payment/cancel"
           : "https://kai-ecommerce-shoees.vercel.app/payment/cancel",
+      shipping_address_collection: { allowed_countries: ["DE", "US", "IN"] },
       metadata: {
         userId: user.id,
       },
