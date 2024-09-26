@@ -41,7 +41,7 @@ const HeroSection = () => {
               md:text-6xl lg:text-7xl"
               >
                 Discover the Latest in{" "}
-                <span className="bg-slate-900 px-2 text-white">Stylish</span>{" "}
+                <span className="bg-slate-900 px-2 text-white rounded-sm">Stylish</span>{" "}
                 Shoes
               </h1>
               <p className="mt-8 text-lg lg:pr-10 max-w-prose text-center lg:text-left text-balance md:text-wrap">
@@ -51,7 +51,7 @@ const HeroSection = () => {
                 the perfect pair for you.
               </p>
 
-              <ul className="mt-8 space-y-2 text-left font-medium flex flex-col items-center sm:items-start">
+              <ul className="mt-8 space-y-2 text-left font-medium flex flex-col items-center sm:items-start ">
                 <div className="space-y-2">
                   <li className="flex gap-1.5 items-center text-left">
                     <Check className="h-5 w-5 shrink-0 text-green-600" />

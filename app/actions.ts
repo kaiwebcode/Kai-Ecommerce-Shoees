@@ -268,8 +268,8 @@ export async function checkOut() {
       payment_method_types: ["card", "link"],
       success_url:
         process.env.NODE_ENV === "development"
-          ? "http://localhost:3000/payment/success"
-          : "https://kai-ecommerce-shoees.vercel.app/payment/success",
+          ? "http://localhost:3000/payment/thank-you"
+          : "https://kai-ecommerce-shoees.vercel.app/payment/thank-you",
       cancel_url:
         process.env.NODE_ENV === "development"
           ? "http://localhost:3000/payment/cancel"
