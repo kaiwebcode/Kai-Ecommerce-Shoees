@@ -18,13 +18,9 @@ const HeroSection = () => {
   return (
     <section ref={ref}>
       <motion.div
-        variants={{
-          hidden: { opacity: 0, y: 75 },
-          visible: { opacity: 1, y: 0 },
-        }}
-        initial="hidden"
-        animate="visible"
-        transition={{ duration: 0.5, delay: 0.25 }}
+        initial={{ opacity:0,y:100}}
+        whileInView={{opacity: 1,y:0}}
+        transition={{ duration: 1.0, ease: "circInOut" }} 
       >
         <div className="pb-6 lg:grid lg:grid-cols-3 sm:pb-32 lg:gap-x-0 xl:gap-x-8 lg:pb-30">
           <div className="col-span-2 px-6 lg:px-10 ">

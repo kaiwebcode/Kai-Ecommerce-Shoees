@@ -6,9 +6,9 @@ import Reviews from "../components/storefront/Reviews";
 
 export default function IndexPage() {
   return (
-    <div>
-      <HeroSection />
+    <div> 
       <Hero />
+      <HeroSection />
       <CategoriesSelection />
       <Reviews />
       <FeaturedProduct />

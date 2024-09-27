@@ -1,12 +1,5 @@
 import prisma from "@/app/lib/db";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import Image from "next/image";
+import { ClientHero } from "./ClientHero";
 
 async function getData() {
   const data = await prisma.banner.findMany({
@@ -22,32 +15,6 @@ export async function Hero() {
   const data = await getData();
   // console.log(data);
   return (
-    <Carousel>
-      <CarouselContent>
-        {data.map((item) => (
-          <CarouselItem key={item.id}>
-            <div className="relative h-[30vh] lg:h-[80vh]">
-              <Image
-                alt="Banner Image"
-                src={item.imageString}
-                fill
-                className="object-cover w-full h-full rounded-2xl"
-              />
-              <div
-                className="absolute lg:top-6 lg:left-6 top-2 left-3 bg-opacity-75 bg-black text-white lg:p-8 p-3 rounded-xl shadow-lg
-              transition-transform hover:scale-105"
-              >
-                <h1 className="sm:text-xs lg:text-4xl font-bold">
-                  {item.title}
-                </h1>
-              </div>
-            </div>
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-
-      <CarouselPrevious className="ml-16" />
-      <CarouselNext className="mr-16" />
-    </Carousel>
+    <ClientHero data={data}/>
   );
 }
