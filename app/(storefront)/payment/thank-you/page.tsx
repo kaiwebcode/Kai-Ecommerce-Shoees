@@ -1,5 +1,3 @@
-import { Cart } from "@/app/lib/interfaces";
-import { redis } from "@/app/lib/redis";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
@@ -15,73 +13,55 @@ export default async function SuccessRoute() {
     redirect("/");
   }
 
-  const cart: Cart | null = await redis.get(`cart-${user.id}`);
-
-  let totalPrice = 0;
-
-  cart?.items.forEach((item) => {
-    totalPrice += item.price * item.quantity;
-  });
-
   return (
-    <section className="w-full min-h-[80vh] flex items-center justify-center">
-      <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20 lg:px-6">
-        <div className="max-w-xl text-center">
-          <h1 className="text-3xl font-bold text-primary">Thank you!</h1>
-          <h1 className="mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-            Your shoes are on the way!
-          </h1>
-          <p className="mt-4 text-base text-zinc-500">
-            We've received your order and are now processing it. You’ll receive
-            an email confirmation shortly.
-          </p>
-        </div>
-
-        <div className="my-6 border-t border-zinc-200"></div>
-
-        <div className="flex flex-col items-center space-y-3  ">
-          <h4 className="text-xl font-semibold text-zinc-900">
-            You made a great choice!
-          </h4>
-          <p className="text-sm text-zinc-600 max-w-md text-center">
-            At Kai-Shoes, we believe that a great pair of shoes doesn’t just
-            look good but offers comfort that lasts. Your purchase is protected
-            by our 5-year wear guarantee. If your shoes don’t meet the highest
-            quality standards, we’ll replace them for free.
-          </p>
-        </div>
-
-        {cart?.items.map((item) => (
-          <div
-            className="mt-10 flex items-center justify-between"
-            key={item.id}
-          >
-            <p className="font-medium text-gray-900">Subtotal:</p>
-            <p className="font-medium text-gray-900">
-              ₹{new Intl.NumberFormat("en-IN").format(totalPrice)}
+    <>
+      <section className="w-full min-h-[80vh] flex items-center justify-center">
+        <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20 lg:px-6">
+          <div className="max-w-xl text-center">
+            <h1 className="text-3xl font-bold text-primary">Thank you!</h1>
+            <h1 className="mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+              Your shoes are on the way!
+            </h1>
+            <p className="mt-4 text-base text-zinc-500">
+              We've received your order and are now processing it. You’ll
+              receive an email confirmation shortly.
             </p>
           </div>
-        ))}
 
-        <Card className="mt-16 mx-auto px-6 py-8 bg-white shadow-md sm:max-w-md">
-          <div className="text-center">
-            <div className="flex justify-center mb-4">
-              <Check className="w-12 h-12 rounded-full bg-green-500/30 text-green-500 p-2" />
+          <div className="my-6 border-t border-zinc-200"></div>
+
+          <div className="flex flex-col items-center space-y-3  ">
+            <h4 className="text-xl font-semibold text-zinc-900">
+              You made a great choice!
+            </h4>
+            <p className="text-sm text-zinc-600 max-w-md text-center">
+              At Kai-Shoes, we believe that a great pair of shoes doesn’t just
+              look good but offers comfort that lasts. Your purchase is
+              protected by our 5-year wear guarantee. If your shoes don’t meet
+              the highest quality standards, we’ll replace them for free.
+            </p>
+          </div>
+
+          <Card className="mt-16 mx-auto px-6 py-8 bg-white shadow-md sm:max-w-md">
+            <div className="text-center">
+              <div className="flex justify-center mb-4">
+                <Check className="w-12 h-12 rounded-full bg-green-500/30 text-green-500 p-2" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900">
+                Payment Successful
+              </h3>
+              <p className="mt-2 text-sm text-zinc-600">
+                Congratulations on your purchase! Your payment was successfully
+                processed. We hope you enjoy your new shoes.
+              </p>
             </div>
-            <h3 className="text-xl font-semibold text-gray-900">
-              Payment Successful
-            </h3>
-            <p className="mt-2 text-sm text-zinc-600">
-              Congratulations on your purchase! Your payment was successfully
-              processed. We hope you enjoy your new shoes.
-            </p>
-          </div>
 
-          <Button asChild className="w-full mt-6">
-            <Link href="/">Back to Homepage</Link>
-          </Button>
-        </Card>
-      </div>
-    </section>
+            <Button asChild className="w-full mt-6">
+              <Link href="/">Back to Homepage</Link>
+            </Button>
+          </Card>
+        </div>
+      </section>
+    </>
   );
 }

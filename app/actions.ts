@@ -103,6 +103,42 @@ export async function deleteProduct(formData: FormData) {
   redirect("/dashboard/products");
 }
 
+export async function deleteUsers(formData: FormData) {
+  const { getUser } = getKindeServerSession();
+  const user = await getUser();
+
+  if (!user || user.email !== "kaifqureshi.pr@gmail.com") {
+    return redirect("/");
+  }
+
+  // Get the userId from the formData
+  const userId = formData.get("userId") as string;
+
+  // Debugging log to check what userId is being received
+  console.log("Received userId:", userId);
+
+  // Check if the userId is valid
+  if (!userId || userId.trim() === "") {
+    throw new Error("User ID is missing or invalid.");
+  }
+
+  // Delete user's orders first
+  await prisma.order.deleteMany({
+    where: {
+      userId: userId,
+    },
+  });
+
+  // Proceed with the deletion of the user
+  await prisma.user.delete({
+    where: {
+      id: userId,
+    },
+  });
+
+  return redirect("/dashboard/users");
+}
+
 export async function createBanner(prevState: unknown, formData: FormData) {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
