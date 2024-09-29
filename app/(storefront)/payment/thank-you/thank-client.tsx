@@ -64,7 +64,7 @@ const ThankClient: React.FC<ThankClientProps> = ({ user }) => {
               transition={{ duration: 0.8, ease: "easeInOut" }}
               className="text-3xl font-bold text-primary"
             >
-              Thank you, {user.name}!
+              Thank you, {user.name}
             </motion.h1>
             <motion.h2
               initial="hidden"
