@@ -22,15 +22,15 @@ interface iAppProps {
 
 export function ProductCard({ item }: iAppProps) {
   return (
-    <div className="rounded-lg  duration-300 hover:shadow-4xl">
+    <div className="rounded-lg ">
       <Carousel className="w-full mx-auto">
         <CarouselContent>
-          {item.images.map((image, index) => (
+          {item.images.map((item, index) => (
             <CarouselItem key={index}>
-              <div className="relative h-[330px] overflow-hidden">
+              <div className="relative h-[330px] ">
                 <Image
-                  src={image}
-                  alt={`Product Image ${index + 1} of ${item.name}`}
+                  src={item}
+                  alt="Product Images"
                   fill
                   className="object-cover object-center w-full h-full rounded-lg
                     transform transition-transform duration-500 ease-in-out hover:scale-105 hover:rotate-1 hover:shadow-xl"
@@ -39,28 +39,25 @@ export function ProductCard({ item }: iAppProps) {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="ml-4 sm:ml-16" />
-        <CarouselNext className="mr-4 sm:mr-16" />
+        <CarouselPrevious className="ml-16" />
+        <CarouselNext className="mr-16" />
       </Carousel>
 
-      <div className="flex justify-between items-center mt-3">
-        <h1 className="font-semibold text-lg sm:text-xl">{item.name}</h1>
-        <span
-          className="inline-flex items-center rounded-md bg-primary/10 px-2 py-1 text-sm font-medium text-primary
+      <div className="flex justify-between items-center mt-2">
+        <h1 className="font-semibold text-xl">{item.name}</h1>
+        <h3
+          className="inline-flex items-center rounded-md bg-primary/10 px-2 py-1 text-xs font-medium text-primary
             ring-1 ring-inset ring-primary/10"
         >
           ₹{item.price}
-        </span>
+        </h3>
       </div>
-
       <p className="text-gray-600 text-sm mt-2 line-clamp-2">
         {item.description}
       </p>
 
-      <Button asChild className="w-full mt-5">
-        <Link href={`/product/${item.id}`} passHref>
-          Learn More!
-        </Link>
+      <Button asChild className="w-full mt-5 ">
+        <Link href={`/product/${item.id}`}>Learn More!</Link>
       </Button>
     </div>
   );
@@ -68,13 +65,13 @@ export function ProductCard({ item }: iAppProps) {
 
 export function LoadingProductCard() {
   return (
-    <div className="w-full flex flex-col gap-4">
-      <Skeleton className="w-full h-[330px] rounded-lg" />
-      <div className="flex flex-col mt-2 gap-2">
-        <Skeleton className="h-4 w-full" />
-        <Skeleton className="h-6 w-full" />
+    <div className="w-full flex-col ">
+      <Skeleton className="w-full h-[330px]" />
+      <div className="flex flex-col mt-2 gap-y-2">
+        <Skeleton className="h-4 w-full " />
+        <Skeleton className="h-6 w-full " />
       </div>
-      <Skeleton className="w-full h-10 mt-5 rounded-md" />
+      <Skeleton className="w-full h-10 mt-5" />
     </div>
   );
 }
