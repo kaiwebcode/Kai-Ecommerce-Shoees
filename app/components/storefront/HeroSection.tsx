@@ -18,9 +18,9 @@ const HeroSection = () => {
   return (
     <section ref={ref}>
       <motion.div
-        initial={{ opacity:0,y:100}}
-        whileInView={{opacity: 1,y:0}}
-        transition={{ duration: 1.0, ease: "circInOut" }} 
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.0, ease: "circInOut" }}
       >
         <div className="pb-6 lg:grid lg:grid-cols-3 sm:pb-32 lg:gap-x-0 xl:gap-x-8 lg:pb-30">
           <div className="col-span-2 px-6 lg:px-10 ">
@@ -37,7 +37,9 @@ const HeroSection = () => {
               md:text-6xl lg:text-7xl"
               >
                 Discover the Latest in{" "}
-                <span className="bg-slate-900 px-2 text-white rounded-sm">Stylish</span>{" "}
+                <span className="bg-slate-900 px-2 text-white rounded-sm">
+                  Stylish
+                </span>{" "}
                 Shoes
               </h1>
               <p className="mt-8 text-lg lg:pr-10 max-w-prose text-center lg:text-left text-balance md:text-wrap">
@@ -105,14 +107,21 @@ const HeroSection = () => {
               </div>
             </div>
           </div>
-          <div className="mt-10 grid gap-y-6 sm:gap-x-2">
-            <div className="group rounded-xl overflow-hidden sm:aspect-w-1 sm:row-span-2">
+          <div className="mt-10 grid gap-y-6 sm:gap-x-4 md:gap-x-6 lg:gap-x-8">
+            <div className="group rounded-xl overflow-hidden sm:aspect-w-1 sm:aspect-h-1 md:aspect-w-2 md:aspect-h-1 lg:aspect-w-3 lg:aspect-h-1">
               <Image
                 src={Hero}
                 alt="Shoes collection showcase"
                 className="object-cover object-center"
-                width={500} // Provide appropriate width and height
-                height={300}
+                layout="responsive" // Ensure responsive layout
+                width={1920} // Large width for scaling
+                height={1080} // Maintain aspect ratio
+                sizes="(max-width: 640px) 100vw,     // Full width for small screens (phones)
+             (max-width: 768px) 90vw,      // 90% width for tablets in portrait mode
+             (max-width: 1024px) 80vw,     // 80% width for tablets in landscape mode
+             (max-width: 1280px) 60vw,     // 60% width for small desktops
+             50vw" // 50% width for large screens
+                priority // Load image with higher priority
               />
             </div>
           </div>
