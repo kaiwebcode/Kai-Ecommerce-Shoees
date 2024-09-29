@@ -55,7 +55,7 @@ const ThankClient: React.FC<ThankClientProps> = ({ user }) => {
         />
       </div>
       <section className="w-full min-h-[80vh] flex items-center justify-center">
-        <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20 lg:px-6">
+        <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6 sm:py-20 lg:px-6">
           <div className="max-w-xl text-center">
             <motion.h1
               initial="hidden"
