@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -26,7 +25,7 @@ import {
 import { MoreHorizontal, PlusCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import {unstable_noStore as noStore} from "next/cache"
+import { unstable_noStore as noStore } from "next/cache";
 import prisma from "@/app/lib/db";
 
 async function getData() {
@@ -98,16 +97,12 @@ export default async function ProductsRoute() {
                       <DropdownMenuContent align="end">
                         <DropdownMenuLabel>Actions</DropdownMenuLabel>
                         <DropdownMenuSeparator />
-                        <DropdownMenuItem>
-                          <Link href={`/dashboard/products/${item.id}`}>
-                            Edit
-                          </Link>
-                        </DropdownMenuItem>
-                        <DropdownMenuItem>
-                          <Link href={`/dashboard/products/${item.id}/delete`}>
-                            Delete
-                          </Link>
-                        </DropdownMenuItem>
+                        <Link href={`/dashboard/products/${item.id}`}>
+                          <DropdownMenuItem>Edit</DropdownMenuItem>
+                        </Link>
+                        <Link href={`/dashboard/products/${item.id}/delete`}>
+                          <DropdownMenuItem>Delete</DropdownMenuItem>
+                        </Link>
                       </DropdownMenuContent>
                     </DropdownMenu>
                   </TableCell>
