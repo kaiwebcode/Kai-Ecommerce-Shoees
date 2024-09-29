@@ -35,10 +35,10 @@ export const ClientHero: React.FC<ClientHeroProps> = ({ data }) => {
                 <motion.div
                   initial={{ opacity: 0, y: 35 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 1.0, ease: "circInOut", delay: 0.7 }}
+                  transition={{ duration: 1.0, ease: "easeIn", delay: 0.8 }}
                   className="absolute lg:top-6 lg:left-6 top-2 left-3 bg-opacity-75 bg-black text-white lg:p-8 p-3 rounded-xl shadow-lg transition-transform hover:scale-105"
                 >
-                  <h1 className="sm:text-xs lg:text-4xl font-bold">
+                  <h1 className="sm:text-xs lg:text-4xl md:text-2xl font-bold">
                     {item.title}
                   </h1>
                 </motion.div>

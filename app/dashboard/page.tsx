@@ -88,7 +88,7 @@ export default async function Dashboard() {
   return (
     <>
       <div>
-        <h1 className="lg:text-4xl text-3xl font-bold py-8">Welcome back, KAI</h1>
+        <h1 className="lg:text-4xl text-3xl font-bold py-6">Welcome back, KAI</h1>
         <DashboardStats
           totalRevenue={totalRevenue}
           totalSales={totalSales}
