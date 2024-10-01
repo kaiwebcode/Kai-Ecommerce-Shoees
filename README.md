@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Kai Ecommerce Shoees
 
-## Getting Started
+Kai Ecommerce Shoees is a modern e-commerce platform for customers to buy stylish shoes and for admins to manage the store’s users, products, and sales. This project is built with a focus on responsive design, secure authentication, and seamless payment integration.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Customers
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Stylish Shoe Collection**: Explore and purchase from a wide range of shoes.
+- **User-Friendly Interface**: A sleek and responsive UI that works on all devices.
+- **Secure Checkout**: Payment is handled via Stripe for safe and secure transactions.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Admin Dashboard
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **User Management**: View the total number of users and their activities.
+- **Product Management**: See the number of products available.
+- **Sales Analytics**: Track total sales, recent sales, and overall revenue.
+- **Purchasing Insights**: Check how many shoes have been purchased.
 
-## Learn More
+## Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+- **Frontend**: React with TypeScript for building a robust and scalable UI.
+- **Backend**: Next.js for server-side rendering and API routes.
+- **Database**: postgresql for store all the Data.
+- **ORM**: Prisma for communication to the database.
+- **Authentication**: Kinde for user authentication and authorization.
+- **Payment Gateway**: Stripe integration for secure payments.
+- **Styling**: Tailwind CSS for responsive and modern design.
+- **Deployment**: Hosted on Vercel for seamless deployment and scalability.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Installation and Setup
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+To run this project locally:
 
-## Deploy on Vercel
+1. Clone the repository:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```bash
+   git clone https://github.com/kaiwebcode/Kai-Ecommerce-Shoees.git
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+   ```
+
+2. Install the dependencies:
+
+   ```bash
+   npm install
+
+   ```
+
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
