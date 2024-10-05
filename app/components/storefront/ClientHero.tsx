@@ -25,7 +25,7 @@ export const ClientHero: React.FC<ClientHeroProps> = ({ data }) => {
         <CarouselContent>
           {data.map((item) => (
             <CarouselItem key={item.id}>
-              <div className="relative h-[30vh] lg:h-[80vh]">
+              <div className="relative h-[30vh] lg:h-[80vh] mt-10">
                 <Image
                   alt="Banner Image"
                   src={item.imageString}
