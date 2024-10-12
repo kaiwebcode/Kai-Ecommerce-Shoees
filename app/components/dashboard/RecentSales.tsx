@@ -37,7 +37,7 @@ export function RecentSales({ sales }: RecentSalesProps) {
               </p>
             </div>
             <p className="ml-auto font-medium">
-              ₹<CountUp end={item.amount / 100} duration={3} separator="," />
+              +₹<CountUp end={item.amount / 100} duration={3} separator="," />
             </p>
           </div>
         ))}
