@@ -44,7 +44,7 @@ export default async function BagRoute() {
           </p>
 
           <Button asChild>
-            <Link href="/">Shop Now!</Link>
+            <Link href="https://kai-ecommerce-shoees.vercel.app/products/all">Shop Now!</Link>
           </Button>
         </div>
       ) : (
